@@ -48,6 +48,10 @@ namespace Quest
                 4,
                 20
             );
+            Challenge joelsQuestionOne = new Challenge("How many fingers am I holding up?", 1, 10);
+            Challenge joelsQuestionTwo = new Challenge("3x3?", 9, 10);
+            Challenge joelsQuestionThree = new Challenge("420+69?", 489, 10);
+
 
             // "Awesomeness" is like our Adventurer's current "score"
             // A higher Awesomeness is better
@@ -91,14 +95,47 @@ namespace Quest
                 theAnswer,
                 whatSecond,
                 guessRandom,
-                favoriteBeatle
+                favoriteBeatle,
+                joelsQuestionOne,
+                joelsQuestionTwo,
+                joelsQuestionThree
             };
 
-            // Loop through all the challenges and subject the Adventurer to them
-            foreach (Challenge challenge in challenges)
+
+            // // Loop through all the challenges and subject the Adventurer to them
+            // foreach (Challenge challenge in challenges)
+            // {
+            //     challenge.RunChallenge(theAdventurer);
+            // }
+            //P7 INSTEAD OF LOOPING THROUGH ALL THE CHALLENGES IN THE CODE ABOVE, LETS RANDOMLY SELECT 5 OF THEM
+
+            //WE HAVE 8 QUESTIONS, SO WE NEED A RANDOM INDEX BETWEEN 0 AND 7
+            int getRandomInt()
             {
-                challenge.RunChallenge(theAdventurer);
+                int newNum = new Random().Next(0, 7);
+                return newNum;
             }
+
+            //LETS STORE THE RANDOM INDEX WE'VE MADE IN AN ARRAY, BUT ONLY IF ITS NOT ALREADY IN THERE (no duplicates)
+            var indexes = new List<int>();
+            while (indexes.Count < 5)
+            {
+                int candidate = getRandomInt();
+                if (!indexes.Contains(candidate))
+                {
+                    indexes.Add(candidate);
+                }
+            }
+
+            //ONCE THERE ARE 5 RANDOM INDEXES IN THE ARRAY, WE'LL RUN EACH
+            //WE COULD ALSO USE A FOREACH HERE, MAY BE MORE READABLE
+            for (var i = 0; i < indexes.Count; i++)
+            {
+                int currentIndex = indexes[i];
+                Challenge currentChallenge = challenges[currentIndex];
+                currentChallenge.RunChallenge(theAdventurer);
+            }
+
 
             // This code examines how Awesome the Adventurer is after completing the challenges
             // And praises or humiliates them accordingly

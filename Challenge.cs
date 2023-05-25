@@ -45,6 +45,7 @@ namespace Quest
             {
                 Console.WriteLine("You have failed the challenge, there will be consequences.");
                 adventurer.Awesomeness -= _awesomenessChange;
+                
             }
 
             // Note how we call an Adventurer object's method
