@@ -15,12 +15,16 @@ namespace Quest
         //P3.ADD IMUTABLE PROPERTY COLORFULROBE
         public Robe ColorfulRobe { get; }
 
+        //P3.ADD IMUTABLE PROPERTY COLORFULROBE
+        public Hat ShinyHat { get; }
+
         // A constructor to make a new Adventurer object with a given name
-        public Adventurer(string name, Robe robe)
+        public Adventurer(string name, Robe robe, Hat hat)
         {
             Name = name;
             Awesomeness = 50;
             ColorfulRobe = robe;
+            ShinyHat = hat;
         }
 
 
@@ -52,7 +56,8 @@ namespace Quest
 
      public string GetDescription()
         {
-            return $"Adventurer, {Name}, is wearing a {ColorfulRobe.Color} robe that is {ColorfulRobe.Length} inches long";
+            string shininessString = ShinyHat.ShininessDescription();
+            return $"Adventurer, {Name}, is wearing a {ColorfulRobe.Color} robe that is {ColorfulRobe.Length} inches long and a {shininessString} hat.";
         }
 
 

@@ -72,8 +72,12 @@ namespace Quest
                 Length = 22
             };
 
+            var adventurersHat = new Hat{
+                Shininess = 6
+            };
+
             // Make a new "Adventurer" object using the "Adventurer" class
-            Adventurer theAdventurer = new Adventurer(userName, adventurersRobe);
+            Adventurer theAdventurer = new Adventurer(userName, adventurersRobe, adventurersHat);
 
             // P3. Call GetDescription before user starts challenges
             Console.WriteLine(theAdventurer.GetDescription());
