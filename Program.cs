@@ -7,9 +7,24 @@ namespace Quest
 {
     class Program
     {
+        
+        // P8. WE NEED TO STORE THE CURRENT SUCCESS COUNT OUT HERE BECAUSE ITS SHARED ACCROSS MULTIPLE GAMES
+        public static int successfulChallengeCount = 0;
+
+        public static void IncreaseChallengeCount()
+        {
+            successfulChallengeCount++;
+        }
+
+        public static void DecreaseChallengeCount()
+        {
+            successfulChallengeCount--;
+        }
         static void Main(string[] args)
         {
+
             Game();
+
         }
 
         static void Game()
