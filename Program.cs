@@ -117,7 +117,9 @@ namespace Quest
                 );
             }
 
-             Replay();
+
+            Prize(theAdventurer);
+            Replay();
 
         }
 
@@ -143,5 +145,18 @@ namespace Quest
                 return;
             }
         }
+
+
+        // P6. AFTER GAME, BEFORE REPLAY, GIVE USER PRIZE
+
+        static void Prize(Adventurer adventurer){
+
+        Prize AdventurersPrize = new Prize("You win 1 gold coin!");
+        AdventurersPrize.ShowPrize(adventurer);
+
+        }
+
+
+
     }
 }
