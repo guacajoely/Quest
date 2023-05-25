@@ -15,14 +15,9 @@ namespace Quest
         {
             successfulChallengeCount++;
         }
-
-        public static void DecreaseChallengeCount()
-        {
-            successfulChallengeCount--;
-        }
         static void Main(string[] args)
         {
-
+    
             Game();
 
         }
@@ -169,7 +164,7 @@ namespace Quest
                 );
             }
 
-
+            Console.WriteLine($"You completed {successfulChallengeCount} challenges. This will give you a head start in your next game!");
             Prize(theAdventurer);
             Replay();
 
@@ -207,8 +202,5 @@ namespace Quest
         AdventurersPrize.ShowPrize(adventurer);
 
         }
-
-
-
     }
 }

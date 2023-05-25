@@ -18,11 +18,14 @@ namespace Quest
         //P3.ADD IMUTABLE PROPERTY COLORFULROBE
         public Hat ShinyHat { get; }
 
+        //GRAB CURRENT SUCCESS COUNT FROM PROGRAM (IF GREATER THAN 0), MULTIPLY BY 10, AND ADD TO INITIAL AWESOMENESS OF NEW ADVENTURER 
+        int PreviousSuccessModifier = Program.successfulChallengeCount > 0 ? Program.successfulChallengeCount : 0;
+
         // A constructor to make a new Adventurer object with a given name
         public Adventurer(string name, Robe robe, Hat hat)
         {
             Name = name;
-            Awesomeness = 50;
+            Awesomeness = 50 + PreviousSuccessModifier;
             ColorfulRobe = robe;
             ShinyHat = hat;
         }
@@ -51,7 +54,7 @@ namespace Quest
                 status = "not gonna make it";
             }
 
-            return $"Adventurer, {Name}, is {status}";
+            return $"Adventurer, {Name}, is {status} (current awesomeness: {Awesomeness})";
         }
 
      public string GetDescription()
@@ -59,9 +62,6 @@ namespace Quest
             string shininessString = ShinyHat.ShininessDescription();
             return $"Adventurer, {Name}, is wearing a {ColorfulRobe.Color} robe that is {ColorfulRobe.Length} inches long and a {shininessString} hat.";
         }
-
-
-
 
     }
 }
