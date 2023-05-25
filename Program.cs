@@ -9,6 +9,11 @@ namespace Quest
     {
         static void Main(string[] args)
         {
+            Game();
+        }
+
+        static void Game()
+        {
             // Create a few challenges for our Adventurer's quest
             // The "Challenge" Constructor takes three arguments
             //   the text of the challenge
@@ -16,12 +21,22 @@ namespace Quest
             //   a number of awesome points to gain or lose depending on the success of the challenge
             Challenge twoPlusTwo = new Challenge("2 + 2?", 4, 10);
             Challenge theAnswer = new Challenge(
-                "What's the answer to life, the universe and everything?", 42, 25);
+                "What's the answer to life, the universe and everything?",
+                42,
+                25
+            );
             Challenge whatSecond = new Challenge(
-                "What is the current second?", DateTime.Now.Second, 50);
+                "What is the current second?",
+                DateTime.Now.Second,
+                50
+            );
 
             int randomNumber = new Random().Next() % 10;
-            Challenge guessRandom = new Challenge("What number am I thinking of?", randomNumber, 25);
+            Challenge guessRandom = new Challenge(
+                "What number am I thinking of?",
+                randomNumber,
+                25
+            );
 
             Challenge favoriteBeatle = new Challenge(
                 @"Who's your favorite Beatle?
@@ -30,7 +45,8 @@ namespace Quest
     3) George
     4) Ringo
 ",
-                4, 20
+                4,
+                20
             );
 
             // "Awesomeness" is like our Adventurer's current "score"
@@ -41,7 +57,6 @@ namespace Quest
             //  If an Adventurer has an Awesomeness less than the min, they are terrible
             int minAwesomeness = 0;
             int maxAwesomeness = 100;
-
 
             //P2. PROMPT USER FOR THEIR NAME
             string userName;
@@ -82,7 +97,35 @@ namespace Quest
             }
             else
             {
-                Console.WriteLine("I guess you did...ok? ...sorta. Still, you should get out of my sight.");
+                Console.WriteLine(
+                    "I guess you did...ok? ...sorta. Still, you should get out of my sight."
+                );
+            }
+
+             Replay();
+
+        }
+
+        //P3. ONCE GAME ENDS PROMPT PLAY AGAIN QUESTION
+        static void Replay()
+        {
+            Console.WriteLine();
+            Console.Write($"Play Again? (Y/N):");
+            string answer = Console.ReadLine().ToLower();
+
+            while (answer != "y" && answer != "n")
+            {
+                Console.Write($"Play Again? (Y/N):");
+                answer = Console.ReadLine().ToLower();
+            }
+
+            if (answer == "y")
+            {
+                Game();
+            }
+            else
+            {
+                return;
             }
         }
     }
