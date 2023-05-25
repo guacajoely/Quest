@@ -58,15 +58,26 @@ namespace Quest
             int minAwesomeness = 0;
             int maxAwesomeness = 100;
 
-            //P2. PROMPT USER FOR THEIR NAME
+            // P2. PROMPT USER FOR THEIR NAME
             string userName;
 
             Console.WriteLine();
             Console.Write("What is your adventurer's name?");
             userName = Console.ReadLine();
 
+
+            // Make a new "Robe" object using the "Robe" class
+            var adventurersRobe = new Robe{
+                Color = "red",
+                Length = 22
+            };
+
             // Make a new "Adventurer" object using the "Adventurer" class
-            Adventurer theAdventurer = new Adventurer(userName);
+            Adventurer theAdventurer = new Adventurer(userName, adventurersRobe);
+
+            // P3. Call GetDescription before user starts challenges
+            Console.WriteLine(theAdventurer.GetDescription());
+            Console.WriteLine();
 
             // A list of challenges for the Adventurer to complete
             // Note we can use the List class here because have the line "using System.Collections.Generic;" at the top of the file.
@@ -106,7 +117,7 @@ namespace Quest
 
         }
 
-        //P3. ONCE GAME ENDS PROMPT PLAY AGAIN QUESTION
+        // P3. ONCE GAME ENDS PROMPT PLAY AGAIN QUESTION
         static void Replay()
         {
             Console.WriteLine();
